@@ -1,0 +1,114 @@
+<app-encabezado></app-encabezado>
+<h3>
+  Nueva categoria
+</h3>
+
+<form
+ [formGroup]="categoriaForm"
+ (ngSubmit)="!categoriaForm.invalid && crearCategoria(categoriaForm.value)"
+>
+  <div class="row">
+    <div class="col col-">
+      <!--Nombre-->
+      <div class="form-group mx-sm-3 mb-2">
+        <label for="nombre">Nombre</label>
+        <input
+          novalidate
+          id="nombre"
+          class="form-control"
+          formControlName="nombre"
+          placeholder="Nombre"
+        />
+        <div
+          class="alert alert-danger alert-dismissible fade show"
+          *ngIf="
+            categoriaForm.get('nombre')!.hasError('required') &&
+            categoriaForm.get('nombre')!.touched
+          "
+        >
+          Contenido requerido
+        </div>
+        <div
+          class="alert alert-danger alert-dismissible fade show"
+          *ngIf="categoriaForm.get('nombre')!.hasError('minlength')"
+        >
+          El contenido es muy corto, debe tener al menos dos caracteres.
+        </div>
+      </div>
+
+      <!--Descripcion-->
+      <div class="form-group mx-sm-3 mb-2">
+        <label for="descripcion">Descripcion</label>
+        <input
+          novalidate
+          id="descripcion"
+          class="form-control"
+          formControlName="descripcion"
+          placeholder="Descripcion"
+        />
+        <div
+          class="alert alert-danger alert-dismissible fade show"
+          *ngIf="
+            categoriaForm.get('descripcion')!.hasError('required') &&
+            categoriaForm.get('descripcion')!.touched
+          "
+        >
+          Contenido requerido
+        </div>
+        <div
+          class="alert alert-danger alert-dismissible fade show"
+          *ngIf="categoriaForm.get('descripcion')!.hasError('minlength')"
+        >
+          El contenido es muy corto, debe tener al menos dos caracteres.
+        </div>
+      </div>
+      <!-- Tareas -->
+      <div class="form-group mx-sm-3 mb-2">
+        <h6>Tareas</h6>
+          <div class="row">
+            <div class="row">
+              <div class="col col-7">Tarea</div>
+              <div class="col col-1"></div>
+            </div>
+            <ng-container formArrayName="tareas">
+              <ng-container *ngFor="let lineaForm of tareasSubForm.controls; let index = index">
+                <div [formGroupName]="index">
+                  <div class="row">
+                    <div class="col col-7">
+                      <select
+                      formControlName="idTarea"
+                      class="form-control"
+                      >
+                      <option [ngValue]="null" disabled>Elegir tarea</option>
+                      <option *ngFor="let tarea of listaTareas" [ngValue]="tarea.id">{{tarea.texto}}</option>
+                      </select>
+                      <div
+                      class="alert alert-danger alert-dismissible fade show"
+                      *ngIf="
+                        lineaForm.get('idTarea')!.hasError('required') &&
+                        lineaForm.get('idTarea')!.touched
+                      "
+                      >
+                      Contenido requerido
+                      </div>
+                    </div>
+                    <div class="col col-1">
+                      <button type="button" class="btn btn-danger ml-3" (click)="eliminarTarea(index)"><i class="bi bi-trash"></i></button>
+                    </div>
+                  </div>
+                </div>
+              </ng-container>
+            </ng-container>
+          </div>
+          <br/>
+          <div class="row">
+            <button type="button" class="btn btn-info ml-3" (click)="adicionarTarea()"><i class="bi bi-plus-circle"></i></button>
+
+          </div>
+      </div>
+    </div>
+  </div>
+  <br />
+  <button type="submit" class="btn btn-primary" [disabled]="!categoriaForm.valid">Crear</button>&nbsp;
+  <button type="button" class="btn btn-danger ml-3" (click)="cancelarCategoria()">Cancelar</button>
+</form>

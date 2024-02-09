@@ -1,0 +1,27 @@
+<app-encabezado></app-encabezado>
+<div class="row">
+  <div class="col col-6">
+    <div class="card" style="width: 100%;">
+      <div class="card-header">
+        Mis categorias <button type="button" class="btn btn-warning" (click)="crearCategoria()"><i class="bi bi-plus-circle"></i></button>
+      </div>
+      <table class="table" border="1">
+        <thead>
+          <th>Nombre</th>
+          <th>Descripcion</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let categoria of categorias">
+            <td>{{categoria.nombre}}</td>
+            <td style="text-align: center;">{{categoria.descripcion}}</td>
+            <td>
+              <button [disabled]="false" type="button" class="btn btn-primary" (click)="editarCategoria(categoria.id)"><i class="bi bi-pencil"></i></button>&nbsp;
+              <button [disabled]="false" type="button" class="btn btn-danger" (click)="borrarCategoria(categoria.id)"><i class="bi bi-trash"></i></button>&nbsp;
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+      </div>
+
+</div>
