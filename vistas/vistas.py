@@ -4,6 +4,7 @@ from flask_restful import Resource
 from sqlalchemy.exc import IntegrityError
 from datetime import datetime
 import hashlib
+import os
 
 from modelos import \
     db, \
@@ -21,10 +22,18 @@ usuario_schema = UsuarioSchema()
 class VistaSignIn(Resource):
 
     def post(self):
+        print("request.json:", request.json)
         usuario = Usuario.query.filter(Usuario.usuario == request.json["usuario"]).first()
         if usuario is None:
             contrasena_encriptada = hashlib.md5(request.json["contrasena"].encode('utf-8')).hexdigest()
-            nuevo_usuario = Usuario(usuario=request.json["usuario"], contrasena=contrasena_encriptada)
+            foto = request.json.get('foto')
+            if foto:
+                ruta_foto = guardar_foto(foto)
+            else:
+                # Establecer una foto por defecto si no se proporciona ninguna foto
+                ruta_foto = "avatar.png"
+
+            nuevo_usuario = Usuario(usuario=request.json["usuario"], contrasena=contrasena_encriptada, foto=ruta_foto)
             db.session.add(nuevo_usuario)
             db.session.commit()
             token_de_acceso = create_access_token(identity=nuevo_usuario.id)
@@ -43,6 +52,17 @@ class VistaSignIn(Resource):
         db.session.delete(usuario)
         db.session.commit()
         return '', 204
+
+    def guardar_foto(foto):
+        directorio_fotos = os.getenv('DIRECTORIO_FOTOS', '/app/fotos_perfil')
+        if not os.path.exists(directorio_fotos):
+            os.makedirs(directorio_fotos)
+                
+        nombre_foto = 'foto_' + str(datetime.now().timestamp()) + '.jpg'
+        ruta_foto = os.path.join(directorio_fotos, nombre_foto)
+        foto.save(ruta_foto)
+
+        return ruta_foto
 
 
 class VistaLogIn(Resource):

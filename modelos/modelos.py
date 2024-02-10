@@ -32,6 +32,7 @@ class Usuario(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     usuario = db.Column(db.String(50))
     contrasena = db.Column(db.String(50))
+    foto = db.Column(db.String(255))
     #tareas = db.relationship('Tarea', cascade='all, delete, delete-orphan')
     categorias = db.relationship('Categoria', cascade='all, delete, delete-orphan')
 
