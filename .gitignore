@@ -8,7 +8,7 @@ __pycache__/
 # C extensions
 *.so
 
-/node_modules/
+frontend/node_modules/
 frontend/.angular/cache/
 # Ignore cache created with the Angular CLI.
 .angular/
