@@ -10,7 +10,7 @@ class Tarea(db.Model):
     fechaInicial = db.Column(db.String(128))
     fechaFinal = db.Column(db.String(128))
     estado = db.Column(db.String(128))
-    #usuario = db.Column(db.Integer, db.ForeignKey('usuario.id'))
+    usuario = db.Column(db.Integer, db.ForeignKey('usuario.id'))
     #idUsuario
     #idCategoria
 
@@ -33,15 +33,8 @@ class Usuario(db.Model):
     usuario = db.Column(db.String(50))
     contrasena = db.Column(db.String(50))
     foto = db.Column(db.String(255))
-    #tareas = db.relationship('Tarea', cascade='all, delete, delete-orphan')
+    tareas = db.relationship('Tarea', cascade='all, delete, delete-orphan')
     categorias = db.relationship('Categoria', cascade='all, delete, delete-orphan')
-
-class TareaSchema(SQLAlchemyAutoSchema):
-    class Meta:
-        model = Tarea
-        load_instance = True
-        
-    id = fields.String()
 
 class CategoriaTareaSchema(SQLAlchemyAutoSchema):
     class Meta:
@@ -50,8 +43,15 @@ class CategoriaTareaSchema(SQLAlchemyAutoSchema):
         include_fk = True
         load_instance = True
         
+    id = fields.String()    
+
+class TareaSchema(SQLAlchemyAutoSchema):
+    class Meta:
+        model = Tarea
+        load_instance = True
+        
     id = fields.String()
-    tarea = fields.String()
+    categorias = fields.List(fields.Nested(CategoriaTareaSchema()))
 
 class CategoriaSchema(SQLAlchemyAutoSchema):
     class Meta:

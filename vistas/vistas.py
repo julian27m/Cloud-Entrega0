@@ -82,17 +82,18 @@ class VistaLogIn(Resource):
 
 class VistaTareas(Resource):
     @jwt_required()
-    def get(self):
-        tareas = Tarea.query.all()
+    def get(self, id_usuario):
+        tareas = Tarea.query.filter_by(usuario=id_usuario).all()
         return [tarea_schema.dump(tarea) for tarea in tareas]
 
     @jwt_required()
-    def post(self):
+    def post(self, id_usuario):
         nuevo_tarea = Tarea( \
-            texto = request.json["texto"], \
-            fechaInicial = request.json["fechaInicial"], \
-            fechaFinal = request.json["fechaFinal"], \
-            estado = request.json["estado"] \
+            texto=request.json["texto"], \
+            fechaInicial=request.json["fechaInicial"], \
+            fechaFinal=request.json["fechaFinal"], \
+            estado=request.json["estado"], \
+            usuario=id_usuario  # Asociar la tarea con el usuario actual
         )
         
         db.session.add(nuevo_tarea)
@@ -103,12 +104,13 @@ class VistaTareas(Resource):
 class VistaTarea(Resource):
     @jwt_required()
     def get(self, id_tarea):
-        return tarea_schema.dump(Tarea.query.get_or_404(id_tarea))
+        tarea = Tarea.query.get_or_404(id_tarea)
+        return tarea_schema.dump(tarea)
         
     @jwt_required()
     def put(self, id_tarea):
         tarea = Tarea.query.get_or_404(id_tarea)
-        tarea.nombre = request.json["texto"]
+        tarea.texto = request.json["texto"]
         tarea.fechaInicial = request.json["fechaInicial"]
         tarea.fechaFinal = request.json["fechaFinal"]
         tarea.estado = request.json["estado"]
@@ -124,7 +126,8 @@ class VistaTarea(Resource):
             db.session.commit()
             return '', 204
         else:
-            return 'El tarea se está usando en diferentes categorias', 409
+            return 'La tarea se está usando en diferentes categorías', 409
+
 
 
 class VistaCategorias(Resource):
@@ -183,8 +186,6 @@ class VistaCategoria(Resource):
         categoria.nombre = request.json["nombre"]
         categoria.descripcion = request.json["descripcion"]
     
-        
-        #Verificar los tareas que se borraron
         for categoria_tarea in categoria.tareas:
             borrar = self.borrar_tarea_util(request.json["tareas"], categoria_tarea)
                 
@@ -195,14 +196,12 @@ class VistaCategoria(Resource):
         
         for categoria_tarea_editar in request.json["tareas"]:
             if categoria_tarea_editar['id']=='':
-                #Es un nuevo tarea de la categoria porque no tiene código
                 nueva_categoria_tarea = CategoriaTarea( \
                     tarea = int(categoria_tarea_editar["idTarea"])
                     
                 )
                 categoria.tareas.append(nueva_categoria_tarea)
             else:
-                #Se actualiza el tarea de la categoria
                 categoria_tarea = self.actualizar_tarea_util(categoria.tareas, categoria_tarea_editar)
                 db.session.add(categoria_tarea)
         
