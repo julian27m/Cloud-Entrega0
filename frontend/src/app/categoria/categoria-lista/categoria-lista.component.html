@@ -13,7 +13,7 @@
         <tbody>
           <tr *ngFor="let categoria of categorias">
             <td>{{categoria.nombre}}</td>
-            <td style="text-align: center;">{{categoria.descripcion}}</td>
+            <td>{{categoria.descripcion}}</td>
             <td>
               <button [disabled]="false" type="button" class="btn btn-primary" (click)="editarCategoria(categoria.id)"><i class="bi bi-pencil"></i></button>&nbsp;
               <button [disabled]="false" type="button" class="btn btn-danger" (click)="borrarCategoria(categoria.id)"><i class="bi bi-trash"></i></button>&nbsp;

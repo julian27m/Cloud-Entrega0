@@ -21,26 +21,27 @@
       <!-- Fecha Inicial -->
       <div class="form-group mx-sm-3 mb-2">
         <label for="fechaInicial">Fecha Inicial</label>
-        <input novalidate id="fechaInicial" class="form-control" formControlName="fechaInicial" placeholder="Fecha Inicial" />
+        <input novalidate id="fechaInicial" class="form-control" formControlName="fechaInicial" placeholder="dd/mm/yyyy" pattern="\d{2}/\d{2}/\d{4}" title="Ingrese una fecha en formato dd/mm/yyyy (por ejemplo, 11/02/2024)" />
         <div class="alert alert-danger alert-dismissible fade show" *ngIf="tareaForm.get('fechaInicial')!.hasError('required') && tareaForm.get('fechaInicial')!.touched">
           Contenido requerido
         </div>
-        <div class="alert alert-danger alert-dismissible fade show" *ngIf="tareaForm.get('fechaInicial')!.hasError('minlength')">
-          El contenido es muy corto, debe tener al menos dos caracteres.
+        <div class="alert alert-danger alert-dismissible fade show" *ngIf="tareaForm.get('fechaInicial')!.hasError('pattern') && tareaForm.get('fechaInicial')!.touched">
+          Por favor, ingrese la fecha en formato dd/mm/yyyy (por ejemplo, 11/02/2024).
         </div>
       </div>
 
       <!-- Fecha Final -->
       <div class="form-group mx-sm-3 mb-2">
         <label for="fechaFinal">Fecha Final</label>
-        <input novalidate id="fechaFinal" class="form-control" formControlName="fechaFinal" placeholder="Fecha Final" />
+        <input novalidate id="fechaFinal" class="form-control" formControlName="fechaFinal" placeholder="dd/mm/yyyy" pattern="\d{2}/\d{2}/\d{4}" title="Ingrese una fecha en formato dd/mm/yyyy (por ejemplo, 11/02/2024)" />
         <div class="alert alert-danger alert-dismissible fade show" *ngIf="tareaForm.get('fechaFinal')!.hasError('required') && tareaForm.get('fechaFinal')!.touched">
           Contenido requerido
         </div>
-        <div class="alert alert-danger alert-dismissible fade show" *ngIf="tareaForm.get('fechaFinal')!.hasError('minlength')">
-          El contenido es muy corto, debe tener al menos dos caracteres.
+        <div class="alert alert-danger alert-dismissible fade show" *ngIf="tareaForm.get('fechaFinal')!.hasError('pattern') && tareaForm.get('fechaFinal')!.touched">
+          Por favor, ingrese la fecha en formato dd/mm/yyyy (por ejemplo, 11/02/2024).
         </div>
       </div>
+
 
       <!-- Estado -->
       <div class="form-group mx-sm-3 mb-2">

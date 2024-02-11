@@ -21,7 +21,7 @@
       <!-- Fecha Inicial -->
       <div class="form-group mx-sm-3 mb-2">
         <label for="fechaInicial">Fecha Inicial</label>
-        <input novalidate id="fechaInicial" class="form-control" formControlName="fechaInicial" placeholder="Fecha Inicial" />
+        <input novalidate id="fechaInicial" class="form-control" formControlName="fechaInicial" placeholder="dd/mm/yyyy" />
         <div class="alert alert-danger alert-dismissible fade show" *ngIf="tareaForm.get('fechaInicial')!.hasError('required') && tareaForm.get('fechaInicial')!.touched">
           Contenido requerido
         </div>
@@ -33,7 +33,7 @@
       <!-- Fecha Final -->
       <div class="form-group mx-sm-3 mb-2">
         <label for="fechaFinal">Fecha Final</label>
-        <input novalidate id="fechaFinal" class="form-control" formControlName="fechaFinal" placeholder="Fecha Final" />
+        <input novalidate id="fechaFinal" class="form-control" formControlName="fechaFinal" placeholder="dd/mm/yyyy" />
         <div class="alert alert-danger alert-dismissible fade show" *ngIf="tareaForm.get('fechaFinal')!.hasError('required') && tareaForm.get('fechaFinal')!.touched">
           Contenido requerido
         </div>
