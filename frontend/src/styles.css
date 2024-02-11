@@ -1,1 +1,37 @@
-/* You can add global styles to this file, and also import other style files */
+
+body {
+    background-color: #212529;
+    color: #fff; 
+  }
+  
+  .container {
+    background-color: #212529;
+    color: #fff; 
+  }
+  
+  .button {
+    background-color: #212529;
+    color: #fff;
+    border-color: #fff;
+  }
+
+  a {
+    color: #fff;
+  }
+
+  a:hover {
+    color: #ccc;
+  }
+
+  .table-bordered {
+    border-color: white;
+  }
+
+  .table-categorias th,
+  .table-categorias td {
+    border-right: 1px solid #fff; /* Asegura que haya un borde derecho en todas las celdas */
+}
+
+
+  
+  
