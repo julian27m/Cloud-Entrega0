@@ -1,5 +1,10 @@
 # Entrega 0 - Desarrollo de Soluciones Cloud
 
+## Video
+ES NECESARIO TENER UN CORREO UNIANDES PARA ACCEDER AL VIDEO:
+
+https://uniandes-my.sharepoint.com/:v:/g/personal/j_morav_uniandes_edu_co/ESIXkLMfAgVMlj-8Z7UcUvYBUix95ELzL1V0OfFSnrCkRw?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=mQqtm2
+
 ## Desarrollo
 Dentro de este repositorio se encuentra el backend y frontend del proyecto de nivelación de Desarrollo de Soluciones Cloud.
 El backend fue construido como una API REST utilizando Python y el framework Flask.
@@ -17,7 +22,7 @@ Pasos a seguir para instalar el mismo ambiente:
 
 ### Ambiente de desarrollo Frontend
 Para desplegar el frontend es necesario seguir estos pasos:
-0. En la ruta frontend\src\environments\environment.ts se encuentra un archivo con la dirección de la MV de AWS y la del servidor local, dependiendo de qué tipo de prueba se hagan. Para este caso, por favor utilizar: apiUrl: 'http://localhost:5000' y comentar apiUrl: 'http://http://3.92.66.67:8080'. (Explicado en el video)
+0. En la ruta frontend\src\environments\environment.ts se encuentra un archivo con la dirección de la MV de AWS y la del servidor local. Por favor dejar la dirección localhost:5000
 1. Dirigirse a la carpeta frontend dentro del proyecto: cd frontend
 2. Instalar el paquete de Angular para evitar errores de compatibilidad: npm install
 3. Desplegar el frontend: ng serve
@@ -25,3 +30,6 @@ Para desplegar el frontend es necesario seguir estos pasos:
 ## Despliegue en Cloud:
 Lastimosamente no me funcionó el empaquetamiento del frontend de la aplicación en Docker. Sin embargo, el backend está funcionando adecuadamente dentro de mi máquina virtual en AWS, cuya dirección ip (no elástica) es http://3.92.66.67:8080
 En el video explico el funcionamiento del servidor en la máquina virtual, qué falla y qué no.
+
+## Modelo
+![Mockups - Página 9](https://github.com/julian27m/Cloud-Entrega0/assets/69479452/4b24bcd8-ca5d-4625-8a1d-c5d047e6ef81)
