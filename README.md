@@ -1,5 +1,10 @@
 # Entrega 0 - Desarrollo de Soluciones Cloud
 
+## Video
+ES NECESARIO TENER UN CORREO UNIANDES PARA ACCEDER AL VIDEO:
+
+https://uniandes-my.sharepoint.com/:f:/g/personal/j_morav_uniandes_edu_co/EjWh04RRURJHpsk5MQuCYEcB8z2e4VE0Gh0rNuEdqsF73w?e=HGaIHH 
+
 ## Desarrollo
 Dentro de este repositorio se encuentra el backend y frontend del proyecto de nivelación de Desarrollo de Soluciones Cloud.
 El backend fue construido como una API REST utilizando Python y el framework Flask.
@@ -17,7 +22,7 @@ Pasos a seguir para instalar el mismo ambiente:
 
 ### Ambiente de desarrollo Frontend
 Para desplegar el frontend es necesario seguir estos pasos:
-0. En la ruta frontend\src\environments\environment.ts se encuentra un archivo con la dirección de la MV de AWS y la del servidor local, dependiendo de qué tipo de prueba se hagan. Para este caso, por favor utilizar: apiUrl: 'http://localhost:5000' y comentar apiUrl: 'http://3.92.66.67:8080'. (Explicado en el video)
+0. En la ruta frontend\src\environments\environment.ts se encuentra un archivo con la dirección de la MV de AWS y la del servidor local. Por favor dejar la dirección localhost:5000
 1. Dirigirse a la carpeta frontend dentro del proyecto: cd frontend
 2. Instalar el paquete de Angular para evitar errores de compatibilidad: npm install
 3. Desplegar el frontend: ng serve
