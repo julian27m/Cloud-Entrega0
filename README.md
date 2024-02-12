@@ -3,7 +3,7 @@
 ## Video
 ES NECESARIO TENER UN CORREO UNIANDES PARA ACCEDER AL VIDEO:
 
-https://uniandes-my.sharepoint.com/:f:/g/personal/j_morav_uniandes_edu_co/EjWh04RRURJHpsk5MQuCYEcB8z2e4VE0Gh0rNuEdqsF73w?e=HGaIHH 
+https://uniandes-my.sharepoint.com/:f:/g/personal/j_morav_uniandes_edu_co/EjWh04RRURJHpsk5MQuCYEcB8z2e4VE0Gh0rNuEdqsF73w?e=htQadB
 
 ## Desarrollo
 Dentro de este repositorio se encuentra el backend y frontend del proyecto de nivelación de Desarrollo de Soluciones Cloud.
