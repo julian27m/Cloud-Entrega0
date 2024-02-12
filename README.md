@@ -25,3 +25,6 @@ Para desplegar el frontend es necesario seguir estos pasos:
 ## Despliegue en Cloud:
 Lastimosamente no me funcionó el empaquetamiento del frontend de la aplicación en Docker. Sin embargo, el backend está funcionando adecuadamente dentro de mi máquina virtual en AWS, cuya dirección ip (no elástica) es http://3.92.66.67:8080
 En el video explico el funcionamiento del servidor en la máquina virtual, qué falla y qué no.
+
+## Modelo
+![Mockups - Página 9](https://github.com/julian27m/Cloud-Entrega0/assets/69479452/4b24bcd8-ca5d-4625-8a1d-c5d047e6ef81)
