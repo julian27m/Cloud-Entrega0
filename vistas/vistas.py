@@ -30,7 +30,6 @@ class VistaSignIn(Resource):
             if foto:
                 ruta_foto = guardar_foto(foto)
             else:
-                # Establecer una foto por defecto si no se proporciona ninguna foto
                 ruta_foto = "avatar.png"
 
             nuevo_usuario = Usuario(usuario=request.json["usuario"], contrasena=contrasena_encriptada, foto=ruta_foto)
@@ -93,7 +92,7 @@ class VistaTareas(Resource):
             fechaInicial=request.json["fechaInicial"], \
             fechaFinal=request.json["fechaFinal"], \
             estado=request.json["estado"], \
-            usuario=id_usuario  # Asociar la tarea con el usuario actual
+            usuario=id_usuario 
         )
         
         db.session.add(nuevo_tarea)

@@ -16,7 +16,6 @@ class Tarea(db.Model):
 
 class CategoriaTarea(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    #cantidad = db.Column(db.Numeric)
     tarea = db.Column(db.Integer, db.ForeignKey('tarea.id'))
     categoria = db.Column(db.Integer, db.ForeignKey('categoria.id'))
 

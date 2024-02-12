@@ -38,7 +38,7 @@ export class CategoriaEditarComponent implements OnInit {
     this.tareaService.darTareas().subscribe((tareas) => {
       this.listaTareas = tareas
 
-      //Cargo la categoria cuando ya tengo los tareas
+      //Cargo la categoria cuando ya tengo las tareas
       this.categoriaService.darCategoria(idCategoria).subscribe((categoria) => {
         this.categoria = categoria
         this.tareasSubForm = this.formBuilder.array([])

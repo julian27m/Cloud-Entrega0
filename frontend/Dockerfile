@@ -1,20 +1,14 @@
-# Use the official lightweight Node.js 14 image
-FROM node:14-alpine
+FROM node:18-alpine
 
-# Set the working directory in the container
+RUN npm install -g @angular/cli
+
 WORKDIR /app
 
-# Copy the current directory contents into the container at /app
 COPY . /app
 
-# Install Angula
-RUN npm install angular
-
-# Install dependencies
 RUN npm install
 
-# Expose port 4200 to the outside world
 EXPOSE 4200
 
-# Start the Angular app
-CMD ["ng", "serve", "--host", "0.0.0.0"]
+CMD ["ng", "serve", "--host", "0.0.0.0", "--port", "8080"]
+
